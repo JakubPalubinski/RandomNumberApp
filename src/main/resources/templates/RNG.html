@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:font-family="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <title>RNG App: projects</title>
@@ -11,6 +11,16 @@
                     <p>
                         Number:
                         <label th:text="*{value}"></label>
+                    </p>
+
+                    <p>
+                        Min:
+                        <input name="min" th:value="*{low}" type="text"/>
+                    </p>
+
+                    <p>
+                        Max:
+                        <input name="max" th:value="*{high}" type="text"/>
                     </p>
                     <input type="submit" id="ReloadButton" value="Reload" onClick="location.reload();" />
                 </form>

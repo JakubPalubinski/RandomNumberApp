@@ -14,7 +14,7 @@ public class LCGeneratorService implements GeneratorService{
     private LCGeneratorService(){}
 
     public Integer getRandomNumber(int low, int high, int seed){
-        number = Math.abs(low + (Math.abs(seed)+number/127))%(high-low);
+        number = low + Math.abs((Math.abs(seed)+number/127))%(high-low+1);
         return number;
     }
 }

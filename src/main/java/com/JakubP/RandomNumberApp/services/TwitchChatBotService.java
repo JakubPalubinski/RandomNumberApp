@@ -32,7 +32,7 @@ public class TwitchChatBotService implements ChatBotService{
     public String readMsg() {
         try{
             if(streamReader.hasNext()){
-                lastLine = streamReader.next();
+                lastLine = streamReader.nextLine();
                 return lastLine;
             }
         } catch (Exception e){
@@ -55,7 +55,7 @@ public class TwitchChatBotService implements ChatBotService{
 
     public void joinChannel(String channel) {
         writeMsg("JOIN #"+channel.toLowerCase());
-        for (int i =0; i<4; i++){
+        for (int i =0; i<3; i++){
             lastLine = streamReader.nextLine();
         }
     }
