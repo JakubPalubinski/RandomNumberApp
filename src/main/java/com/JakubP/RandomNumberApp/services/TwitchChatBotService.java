@@ -1,44 +1,44 @@
-package com.JakubP.RandomNumberApp.logic;
+package com.JakubP.RandomNumberApp.services;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class ChatBot {
-    private Socket s = new Socket("irc.chat.twitch.tv", 6667);
-    private String accountName = "niduc2022";
-    private String Token = "oauth:qokf8clo4fze4yb0mzfn9y172csq17";
-    private Scanner streamReader = new Scanner(s.getInputStream());
-    private PrintWriter streamWriter = new PrintWriter(s.getOutputStream(), true);
+public class TwitchChatBotService implements ChatBotService{
+    private final Socket socket = new Socket("irc.chat.twitch.tv", 6667);
+    private final String accountName = "niduc2022";
+    private final String Token = "oauth:qokf8clo4fze4yb0mzfn9y172csq17";
+    private final Scanner streamReader = new Scanner(socket.getInputStream());
+    private final PrintWriter streamWriter = new PrintWriter(socket.getOutputStream(), true);
     private String lastLine;
-    private static ChatBot bot;
+    private static TwitchChatBotService bot;
 
-    public static ChatBot getBot() throws IOException {
+    public static TwitchChatBotService getBot() throws IOException {
         if(bot==null){
-            bot = new ChatBot();
+            bot = new TwitchChatBotService();
         }
         return bot;
     }
     
-    private ChatBot() throws IOException {
+    private TwitchChatBotService() throws IOException {
         streamWriter.println("PASS " + Token);
         streamWriter.println("NICK " + accountName);
         for (int i =0; i<7; i++){
             lastLine = streamReader.nextLine();
-            //System.out.println(lastLine);
         }
     }
 
-    public String readMsg() throws IOException {
-
-        while(true){
+    public String readMsg() {
+        try{
             if(streamReader.hasNext()){
                 lastLine = streamReader.next();
                 return lastLine;
             }
+        } catch (Exception e){
+            return "";
         }
-
+        return "";
     }
 
     public int getNumberFromMsg() throws IOException {

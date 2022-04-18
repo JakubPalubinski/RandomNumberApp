@@ -1,5 +1,4 @@
-package com.JakubP.RandomNumberApp.Number;
-
+package com.JakubP.RandomNumberApp.models;
 
 public class NumberModel {
     private String value;

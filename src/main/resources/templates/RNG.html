@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:font-family="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>RNG App: projects</title>
-</head>
-<body>
-<main>
-<center>
-    <label action="#" th:actions="@{/}" th:object="${RandNum}" font-family: monospace>Number:
-        <p type="text" th:text="*{value}" font-family: monospace></p>
-    </label>
-
-    <input  font-family: monospace type="button" value="Reload" onClick="location.reload();" />
-</center>
-</main>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>RNG App: projects</title>
+    </head>
+    <body>
+        <main>
+            <center>
+                <form action="#" method="get" th:action="@{/}" th:object="${RandNum}">
+                    <p>
+                        Number:
+                        <label th:text="*{value}"></label>
+                    </p>
+                    <input type="submit" id="ReloadButton" value="Reload" onClick="location.reload();" />
+                </form>
+            </center>
+        </main>
+        <script type="text/javascript" th:src="@{/js/src/index.js}"></script>
+    </body>
 </html>
