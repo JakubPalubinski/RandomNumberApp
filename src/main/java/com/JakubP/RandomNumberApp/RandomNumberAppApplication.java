@@ -1,9 +1,6 @@
 package com.JakubP.RandomNumberApp;
 
-import com.JakubP.RandomNumberApp.services.ConnectionService;
-import com.JakubP.RandomNumberApp.services.TwitchConnectionService;
-import com.JakubP.RandomNumberApp.services.TwitchStreamDataService;
-import com.JakubP.RandomNumberApp.services.TwitchChatBotService;
+import com.JakubP.RandomNumberApp.services.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.IOException;
@@ -12,9 +9,12 @@ import java.io.IOException;
 public class RandomNumberAppApplication  {
 
 	public static void main(String[] args) throws IOException {
-		ConnectionService c = new TwitchConnectionService(TwitchChatBotService.getBot(), new TwitchStreamDataService());
-		c.connect();
+
+		ConnectionService twitchConnectionService = new TwitchConnectionService(TwitchChatBotService.getBot(), new TwitchStreamDataService());
+		TimeService refreshTimeService = new RefreshTimerService(new TwitchStreamDataService(), twitchConnectionService);
+		refreshTimeService.start();
+		twitchConnectionService.connect();
 		SpringApplication.run(RandomNumberAppApplication.class, args);
-		c.disconnect();
+		twitchConnectionService.disconnect();
 	}
 }

@@ -55,8 +55,10 @@ public class TwitchChatBotService implements ChatBotService{
 
     public void joinChannel(String channel) {
         writeMsg("JOIN #"+channel.toLowerCase());
-        for (int i =0; i<3; i++){
-            lastLine = streamReader.nextLine();
+        for (int i =0; i<2; i++){
+            if(streamReader.hasNext()){
+                lastLine = streamReader.nextLine();
+            }
         }
     }
 }

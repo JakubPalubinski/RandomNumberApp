@@ -12,13 +12,13 @@ import java.util.List;
 
 @Service
 public class TwitchStreamDataService implements StreamDataService{
-    private final List<String> usernames = new ArrayList<>();
+    private static List<String> usernames = new ArrayList<>();
 
     public TwitchStreamDataService(){
-        refresh();
+
     }
 
-    private void refresh(){
+    public void refresh(){
         usernames.clear();
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://api.twitch.tv/helix/streams?first=50")).headers("Authorization", "Bearer 09ghtst8c374b6s8986n0yr4c2flbn", "Client-Id", "hfeulz5uv752u3v0zh1qzjxm4mt1ia").GET().build();
