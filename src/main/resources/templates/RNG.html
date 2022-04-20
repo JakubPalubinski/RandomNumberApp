@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>RNG App: projects</title>
-    </head>
-    <body>
-        <main>
-            <center>
-                <form action="#" method="get" th:action="@{/}" th:object="${RandNum}">
-                    <p>
-                        Number:
-                        <label th:text="*{value}"></label>
-                    </p>
+<head>
+    <meta charset="UTF-8">
+    <title>RNG App: projects</title>
+    <link th:href="@{/css/src/index.css}" rel="stylesheet" />
+</head>
 
-                    <p>
-                        Min:
-                        <input name="min" th:value="*{low}" type="text"/>
-                    </p>
+<body>
+<main>
+    <center>
+        <div class="border">
+            <form action="#" method="get" th:action="@{/}" th:object="${RandNum}">
+                <p class="number">
+                    Number:
+                    <label th:text="*{value}"></label>
+                </p>
 
-                    <p>
-                        Max:
-                        <input name="max" th:value="*{high}" type="text"/>
-                    </p>
-                    <input type="submit" id="ReloadButton" value="Reload" onClick="location.reload();" />
-                </form>
-            </center>
-        </main>
-        <script type="text/javascript" th:src="@{/js/src/index.js}"></script>
-    </body>
+                <p class="minmax">
+                    Min:
+                    <input class="borderin" name="min" th:value="*{low}" type="text"/>
+                </p>
+
+                <p class="minmax">
+                    Max:
+                    <input class="borderin" name="max" th:value="*{high}" type="text"/>
+                </p>
+                <input class="button" type="submit" id="ReloadButton" value="Reload" onClick="location.reload();" />
+            </form>
+        </div>
+    </center>
+</main>
+<script type="text/javascript" th:src="@{/js/src/index.js}"></script>
+</body>
 </html>

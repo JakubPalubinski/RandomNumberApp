@@ -1,0 +1,31 @@
+body {
+		    background-color:rgb(119,190,226);
+		}
+        .number {
+            color: rgb(252,230,134);
+            font-family: courier;
+            font-size: 40px;
+        }
+        .minmax {
+            font-family: monospace;
+            font-size: 20px;
+            font-weight: bold;
+            color: rgb(38,38,38);
+        }
+        div.border {
+            border-style: solid;
+            padding-bottom: 40px;
+            margin-left: 500px;
+            margin-right: 500px;
+            border-radius: 15px;
+            background-color:rgb(54,162,212);
+        }
+        .borderin {
+            border-radius: 5px;
+            border-width: 1px;
+            padding: 5px 5px 5px 5px;
+        }
+        .button {
+            font-family: monospace;
+            background-color:rgb(237, 234, 223);
+        }
