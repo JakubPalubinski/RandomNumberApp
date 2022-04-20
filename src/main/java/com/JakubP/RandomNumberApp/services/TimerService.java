@@ -1,5 +1,5 @@
 package com.JakubP.RandomNumberApp.services;
 
-public interface TimeService {
+public interface TimerService {
     public void start();
 }

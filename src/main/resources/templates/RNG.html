@@ -5,7 +5,6 @@
     <title>RNG App: projects</title>
     <link th:href="@{/css/src/index.css}" rel="stylesheet" />
 </head>
-
 <body>
 <main>
     <center>
@@ -15,12 +14,10 @@
                     Number:
                     <label th:text="*{value}"></label>
                 </p>
-
                 <p class="minmax">
                     Min:
                     <input class="borderin" name="min" th:value="*{low}" type="text"/>
                 </p>
-
                 <p class="minmax">
                     Max:
                     <input class="borderin" name="max" th:value="*{high}" type="text"/>

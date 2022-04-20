@@ -24,13 +24,13 @@ public class NumberController {
 
     @GetMapping()
     String showNumber(Model model, @RequestParam(required=false,name="min") String min, @RequestParam(required=false,name="max") String max) throws IOException {
-        var RN = new NumberModel();
+        var numberModel = new NumberModel();
         if(min!=null && max!=null){
-            RN.setLow(Integer.parseInt(min));
-            RN.setHigh(Integer.parseInt(max));
+            numberModel.setLow(Integer.parseInt(min));
+            numberModel.setHigh(Integer.parseInt(max));
         }
-        RN.setValue(gen.getRandomNumber(RN.low, RN.high, bot.getNumberFromMsg()).toString());
-        model.addAttribute("RandNum", RN);
+        numberModel.setValue(gen.getRandomNumber(numberModel.low, numberModel.high, bot.getNumberFromMsg()).toString());
+        model.addAttribute("RandNum", numberModel);
         return "RNG";
     }
 }

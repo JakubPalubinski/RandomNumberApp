@@ -6,22 +6,22 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 @Service
-public class RefreshTimerService implements TimeService{
+public class RefreshTimerService implements TimerService {
     private Timer timer = new Timer();
-    private final StreamDataService twitchStreamDataService;
-    private final ConnectionService twitchConnectionService;
+    private final StreamDataService streamDataService;
+    private final ConnectionService connectionService;
 
-    public RefreshTimerService(StreamDataService streamDataService, ConnectionService twitchConnectionService){
-        this.twitchConnectionService = twitchConnectionService;
-        this.twitchStreamDataService = streamDataService;
+    public RefreshTimerService(StreamDataService streamDataService, ConnectionService connectionService){
+        this.connectionService = connectionService;
+        this.streamDataService = streamDataService;
         }
 
     TimerTask task = new TimerTask() {
         @Override
         public void run() {
-            twitchConnectionService.disconnect();
-            twitchStreamDataService.refresh();
-            twitchConnectionService.connect();
+            connectionService.disconnect();
+            streamDataService.refresh();
+            connectionService.connect();
         }
     };
 

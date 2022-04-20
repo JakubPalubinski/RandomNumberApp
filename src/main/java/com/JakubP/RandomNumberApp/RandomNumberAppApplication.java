@@ -10,11 +10,11 @@ public class RandomNumberAppApplication  {
 
 	public static void main(String[] args) throws IOException {
 
-		ConnectionService twitchConnectionService = new TwitchConnectionService(TwitchChatBotService.getBot(), new TwitchStreamDataService());
-		TimeService refreshTimeService = new RefreshTimerService(new TwitchStreamDataService(), twitchConnectionService);
+		ConnectionService connectionService = new TwitchConnectionService(TwitchChatBotService.getBot(), new TwitchStreamDataService());
+		TimerService refreshTimeService = new RefreshTimerService(new TwitchStreamDataService(), connectionService);
 		refreshTimeService.start();
-		twitchConnectionService.connect();
+		connectionService.connect();
 		SpringApplication.run(RandomNumberAppApplication.class, args);
-		twitchConnectionService.disconnect();
+		connectionService.disconnect();
 	}
 }
